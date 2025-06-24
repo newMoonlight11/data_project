@@ -1,0 +1,53 @@
+from django.db import models
+from django.utils import timezone
+
+class Registro(models.Model):
+    tipo_documento = models.CharField(max_length=5)
+    documento = models.CharField(max_length=20, null=True, blank=True)
+    nombre = models.CharField(max_length=100, null=True, blank=True)
+    producto = models.CharField(max_length=10)
+    poliza = models.CharField(max_length=50)
+    periodo = models.CharField(max_length=1)
+    valor_asegurado = models.DecimalField(max_digits=12, decimal_places=2)
+    valor_prima = models.DecimalField(max_digits=12, decimal_places=2)
+    doc_cobro = models.CharField(max_length=20)
+    fecha_ini = models.DateField(null=True, blank=True)
+    fecha_fin = models.DateField(null=True, blank=True)
+    dias = models.IntegerField(null=True, blank=True)
+    telefono_1 = models.CharField(max_length=20, blank=True)
+    telefono_2 = models.CharField(max_length=20, blank=True)
+    telefono_3 = models.CharField(max_length=20, blank=True)
+    ciudad = models.CharField(max_length=50)
+    departamento = models.CharField(max_length=50)
+    fecha_venta = models.DateField(null=True, blank=True)
+    fecha_nacimiento = models.DateField(null=True, blank=True)
+    tipo_trans = models.CharField(max_length=3)
+    beneficiarios = models.TextField(blank=True)
+    genero = models.CharField(max_length=1)
+    sucursal = models.CharField(max_length=100)
+    tipo_cuenta = models.CharField(max_length=20, blank=True)
+    ultimos_digitos_cuenta = models.CharField(max_length=10, blank=True)
+    entidad_bancaria = models.CharField(max_length=100)
+    nombre_banco = models.CharField(max_length=100)
+    estado_debito = models.CharField(max_length=20)
+    causal_rechazo = models.CharField(max_length=255, blank=True)
+    codigo_canal = models.CharField(max_length=3)
+    descripcion_canal = models.CharField(max_length=255)
+    codigo_estrategia = models.CharField(max_length=50)
+    tipo_estrategia = models.CharField(max_length=100)
+    correo_electronico = models.EmailField(blank=True)
+    fecha_entrega_colmena = models.DateField(default=timezone.now)
+    mes_a_trabajar = models.IntegerField(default=timezone.now().month)
+    nombre_db = models.CharField(max_length=255)
+
+    texto = models.BooleanField(default=False)
+    email = models.BooleanField(default=False)
+    telefono = models.BooleanField(default=False)
+    whatsapp = models.BooleanField(default=False)
+    fisica = models.BooleanField(default=False)
+
+    mejor_canal = models.CharField(max_length=20, blank=True)
+    contactar_al = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        db_table = 'registro'
